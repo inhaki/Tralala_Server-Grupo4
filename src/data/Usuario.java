@@ -29,15 +29,15 @@ public class Usuario {
 	@Persistent(defaultFetchGroup="true", mappedBy="usuario", dependentElement = "true")
 	@Join
 	private List<ListaRepr> listaR;
-	public Usuario(/*String nombre, int idUser, String email, String contraseña,
-			String dni*/) {
+	public Usuario(String nombre, int idUser, String email, String contraseña,
+			String dni) {
 		//LO COMENTO PARA QUE COINCIDA CON EL MÉTODO EN DBManager
-		/*super();
+		super();
 		this.nombre = nombre;
 		this.idUser = idUser;
 		this.email = email;
 		this.contraseña = contraseña;
-		this.dni = dni;*/
+		this.dni = dni;
 		this.listaR = new ArrayList<ListaRepr>();
 	}
 	public String getNombre() {

@@ -20,7 +20,7 @@ public class DBManager {
 		
 		this.usersCache = new ArrayList<>();
 		//metemos "a mano" algunos usuario
-		Usuario user1= new Usuario();
+		/*Usuario user1= new Usuario();
 		user1.setNombre("Inhaki");
 		user1.setIdUser(1);
 		user1.setEmail("inhaki@gmail.com");
@@ -35,7 +35,7 @@ public class DBManager {
 		user2.setDni("9999A");
 		
 		this.usersCache.add(user1);
-		this.usersCache.add(user2);
+		this.usersCache.add(user2);*/
 	}
 	public static DBManager getInstance() {
 		if (instance == null) {

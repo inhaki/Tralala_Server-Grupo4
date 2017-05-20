@@ -23,7 +23,7 @@ public class MainTralalaServidor {
 		//protegido con try catch que inicializa el patrón de la Façada
 		try {
 			IRemoteFaçade remoteFaçade = RemoteFaçade.getInstance();
-			
+			//anuncia los servicios en el registro RMI
 			Naming.rebind(name, remoteFaçade);
 			System.out.println(" * Tralala server '" + name + "' started!!");
 		} catch (Exception ex) {
