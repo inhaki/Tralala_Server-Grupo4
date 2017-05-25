@@ -23,6 +23,7 @@ public class LoginService {
 	}
 	
 	public Usuario login(String email, String contraseña) {
+		//MODIFICAR LA INSTANICA A LA DE CLASE USUARIODAO
 		Usuario user = DBManager.getInstance().getUser(email);
 		
 		if (user != null && user.checkContraseña(contraseña)) {

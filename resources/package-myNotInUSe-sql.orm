@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE orm SYSTEM "file:/javax/jdo/orm.dtd">
+<orm>
+    <package name="es.deusto.ingenieria.sd.datanucleus.jdo.data">    
+        <class name="Product">
+            <field name="name">
+                <column length="100" jdbc-type="VARCHAR"/>
+            </field>
+            <field name="description">
+                <column length="255" jdbc-type="VARCHAR"/>
+            </field>
+          <field name="price">
+                <column jdbc-type="DOUBLE"/>
+            </field>
+        </class>
+
+        <class name="Book">
+            <inheritance strategy="new-table"/>
+            <field name="author">
+                <column length="40" jdbc-type="VARCHAR"/>
+            </field>
+            <field name="isbn">
+                <column length="20" jdbc-type="CHAR"/>
+            </field>
+            <field name="publisher">
+                <column length="40" jdbc-type="VARCHAR"/>
+            </field>
+            <field name="copies" default-fetch-group="true">
+            	<collection element-type="es.deusto.ingenieria.sd.datanucleus.jdo.data.Copy" dependent-element="true"/>
+            	<join/>
+        	</field>
+         </class>
+		        	 
+        <class name="Copy">
+            <field name="copyNum">
+                <column length="128" jdbc-type="VARCHAR"/>
+            </field>
+			<field name="state">
+                <column length="128" jdbc-type="VARCHAR"/>
+            </field>
+            <field name="book">               
+            </field>
+            <field name="shelf" default-fetch-group="true">               
+            </field>
+		</class>
+		
+		<class name="Shelf">
+            <field name="identifier">
+            </field>
+            <field name="copies" default-fetch-group="true">
+            	<collection element-type="es.deusto.ingenieria.sd.datanucleus.jdo.data.Copy"/>
+            	<join/>
+        	</field>
+         </class>
+		 
+    </package>
+</orm>

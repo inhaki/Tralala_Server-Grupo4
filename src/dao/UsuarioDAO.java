@@ -12,16 +12,30 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
-
 import data.Usuario;
 
+//<<Singleton>>
 public class UsuarioDAO implements IUsuarioDAO{
 	//muy importante implementar la interfaz
 	private PersistenceManagerFactory pmf;
 	
+	private static UsuarioDAO instance;
+	
 	public UsuarioDAO(){
 		
 		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+	}
+	
+	//método que devuelve una instancia de UsuarioDAO
+	//así LoginService podrá hacer uso de ella e implementar el Login
+	public static UsuarioDAO getInstance() {
+		
+		if (instance == null){
+			instance= new UsuarioDAO();
+		}
+		
+		return instance;
+		
 	}
 	
 	public void registrarUsuario(Usuario user){

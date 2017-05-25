@@ -8,18 +8,25 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
 import services.LoginService;
+import dao.IUsuarioDAO;
+import dao.UsuarioDAO;
 import data.Usuario;
-//import services.LoginService;
-
 
 public class RemoteFaçade extends UnicastRemoteObject implements IRemoteFaçade{
 	private static final long serialVersionUID = 1L;
 	//para luego hacer la instancia con el Singleton
 	private static RemoteFaçade instance;
 	public Usuario state;
+	private IUsuarioDAO dao; //para guardar datos, desde aquí y no usar DBManager
 	
 	private RemoteFaçade() throws RemoteException {
-		super();		
+		super();
+		//en el caso de que fuera así, habría que DESCOMENTAR el Construrtor de clase Usuario!!
+		dao= new UsuarioDAO();
+		Usuario user1= new Usuario("Inhaki", 1, "inhaki@gmail.com","1234", "4456D");
+		dao.registrarUsuario(user1);
+		Usuario user2= new Usuario("Annonymous", 2, "annonymous@gmail.com", "1234", "9999Z");
+		dao.registrarUsuario(user2);
 	}
 	
 	public static RemoteFaçade getInstance() {
