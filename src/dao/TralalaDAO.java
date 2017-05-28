@@ -14,24 +14,26 @@ import javax.jdo.Query;
 import javax.jdo.Transaction;
 import data.Usuario;
 
+//DAO para las tablas en bbdd de Usuario y Canciones
+//en lugar de hacer dos DAO, juntamos todos los métodos en este
 //<<Singleton>>
-public class UsuarioDAO implements IUsuarioDAO{
+public class TralalaDAO implements ITralalaDAO{
 	//muy importante implementar la interfaz
 	private PersistenceManagerFactory pmf;
 	
-	private static UsuarioDAO instance;
+	private static TralalaDAO instance;
 	
-	public UsuarioDAO(){
+	public TralalaDAO(){
 		
 		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 	}
 	
 	//método que devuelve una instancia de UsuarioDAO
 	//así LoginService podrá hacer uso de ella e implementar el Login
-	public static UsuarioDAO getInstance() {
+	public static TralalaDAO getInstance() {
 		
 		if (instance == null){
-			instance= new UsuarioDAO();
+			instance= new TralalaDAO();
 		}
 		
 		return instance;
