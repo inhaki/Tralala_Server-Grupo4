@@ -122,21 +122,21 @@ public class CancionDAO implements ICancionDAO {
 	}
 
 	@Override
-	public Cancion getCanciones(String name) {
+	public Cancion getCanciones(String titulo) {
 		// TODO Auto-generated method stub
 		PersistenceManager pm = pmf.getPersistenceManager();
 		pm.getFetchPlan().setMaxFetchDepth(3);
 		
 		Transaction tx = pm.currentTransaction();
-		Cancion product = null;
+		Cancion cancion = null;
 	    
 		try {
-			System.out.println ("   * Querying a Product: " + name);
+			System.out.println ("   * Querying a Product: " + titulo);
 			
 	    	tx.begin();
-	    	Query query = pm.newQuery("SELECT FROM " + Cancion.class.getName() + " WHERE name == '" + name + "'");
+	    	Query query = pm.newQuery("SELECT FROM " + Cancion.class.getName() + " WHERE titulo == '" + titulo + "'");
 	    	query.setUnique(true);
-	    	product = (Cancion)query.execute();	    
+	    	cancion = (Cancion)query.execute();	    
  	    	tx.commit();
    	    
 	     } catch (Exception ex) {
@@ -149,7 +149,7 @@ public class CancionDAO implements ICancionDAO {
 	   		pm.close();
 	     }
 
-	    return product;
+	    return cancion;
 	}
 
 }
