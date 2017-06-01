@@ -25,6 +25,11 @@ public class Cancion implements Serializable{
 	@Persistent(defaultFetchGroup="true")
 	@Join
 	private List<ListaRepr> listaR;
+	
+	//una cacnión puede ser reproduccida N veces
+	//esta lista contabiliza las reproducciones de cada canción
+	private List<Reproduccion> listRepCancion;
+	
 	public Cancion(String titulo, double duracion, String fechaLanz,
 			int precio, String letra, String genero) {
 		super();
@@ -35,6 +40,7 @@ public class Cancion implements Serializable{
 		this.letra = letra;
 		this.genero = genero;
 		this.listaR= new ArrayList<ListaRepr>();
+		this.listRepCancion = new ArrayList<Reproduccion>();
 	}
 	
 	

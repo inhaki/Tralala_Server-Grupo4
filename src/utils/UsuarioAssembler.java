@@ -10,6 +10,8 @@ public class UsuarioAssembler {
 	
 	private static UsuarioAssembler instance;
 	
+	//utiliza el patrón Singleton
+	//la forma de crear la instancia es Lazy
 	public static UsuarioAssembler getInstance() {
 		if (instance == null) {
 			instance = new UsuarioAssembler();

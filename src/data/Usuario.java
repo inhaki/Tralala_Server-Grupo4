@@ -29,6 +29,9 @@ public class Usuario {
 	@Persistent(defaultFetchGroup="true", mappedBy="usuario", dependentElement = "true")
 	@Join
 	private List<ListaRepr> listaR;
+	
+	private List<Reproduccion> listRepCancion;
+	
 	public Usuario(String nombre, int idUser, String email, String contraseña,
 			String dni) {
 		//LO COMENTO PARA QUE COINCIDA CON EL MÉTODO EN DBManager
@@ -39,6 +42,7 @@ public class Usuario {
 		this.contraseña = contraseña;
 		this.dni = dni;
 		this.listaR = new ArrayList<ListaRepr>();
+		this.listRepCancion = new ArrayList<Reproduccion>();
 	}
 	public String getNombre() {
 		return nombre;
@@ -82,7 +86,11 @@ public class Usuario {
 	public void setListaR(List<ListaRepr> listaR) {
 		this.listaR = listaR;
 	}
-	
-	
+	public List<Reproduccion> getListRepCancion() {
+		return listRepCancion;
+	}
+	public void setListRepCancion(List<Reproduccion> listRepCancion) {
+		this.listRepCancion = listRepCancion;
+	}
 	
 }
